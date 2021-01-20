@@ -54,13 +54,57 @@ item_item_sim_matrix = pd.DataFrame(cosine_similarity(customer_item_matrix.T))
 packages: pandas; from sklearn.metrics.pairwise import cosine_similarity
 
 ## Chapter7
+content: Exploratory Analysis for Customer Behavior
+various metrics that can be used to analyze how customers behave and interact with the product.
+Engagement Rates by Offer Type;Engagement Rates by Sales Channel;Engagement Rates by Months Since Policy Inception
+
+packages:import matplotlib.pyplot;pandas 
 
 ## Chapter8
+content: Predicting the Likelihood of Marketing Engagement
+Model:RandomForestClassifier; Evaluating Metrics: Accuracy, Precision, and Recall; ROC & AUC
+accuracy_score(y_train, in_sample_preds);accuracy_score(y_test, out_sample_preds);precision_score(y_train, in_sample_preds));precision_score(y_test, out_sample_preds));recall_score(y_train, in_sample_preds));recall_score(y_test, out_sample_preds))
+in_sample_fpr, in_sample_tpr, in_sample_thresholds = roc_curve(y_train, in_sample_preds)
+out_sample_fpr, out_sample_tpr, out_sample_thresholds = roc_curve(y_test, out_sample_preds)
+in_sample_roc_auc = auc(in_sample_fpr, in_sample_tpr)
+out_sample_roc_auc = auc(out_sample_fpr, out_sample_tpr)
+
+packages:import pandas as pd;import matplotlib.pyplot as plt;from sklearn.model_selection import train_test_split; from sklearn.ensemble import RandomForestClassifier;from sklearn.metrics import accuracy_score, precision_score, recall_score;from sklearn.metrics import roc_curve, auc
 
 ## Chapter9
+content: Customer Lifetime Value
+use linear regression(or svm, randomforestregressor) model to predict CLV and evaluate the model with r2_score and median_absolute_error.
+
+packages: 
+from sklearn.linear_model import LinearRegression;from sklearn.svm import SVR;from sklearn.ensemble import RandomForestRegressor; from sklearn.metrics import r2_score, median_absolute_error
 
 ## Chapter10
+content: Customer Segmentation
+clustering algorithms (k-means) to build different customer segments and use silhouette_score to select best number of clusters.
+
+packages:from sklearn.cluster import KMeans,from sklearn.metrics import silhouette_score
 
 ## Chapter11
+content: Customer Retention
+use ANN to build model to predict if the customer will churn or not. and then use 5 classic metrics to verify the result
+
+model = Sequential()
+model.add(Dense(16, input_dim=len(features), activation='relu'))
+model.add(Dense(8, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+packages:from keras.models import Sequential;from keras.layers import Dense;from sklearn.model_selection import train_test_split;from sklearn.metrics import accuracy_score, precision_score, recall_score; from sklearn.metrics import roc_curve, auc
 
 ## Chapter12
+content: ABtesting
+AB tesing on 5 variables:marketsize, location, age of store, promotion and week, and then analyse the distribution and relation of variables
+Statistical Significance: to test the if there is significant impact of different variabels on results
+t, p = stats.ttest_ind(
+    df.loc[df['Promotion'] == 1, 'SalesInThousands'].values, 
+    df.loc[df['Promotion'] == 2, 'SalesInThousands'].values, 
+    equal_var=False
+)
+
+packages: import matplotlib.pyplot as plt;import pandas as pd;import numpy as np;from scipy import stats
+
